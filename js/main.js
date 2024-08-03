@@ -4,13 +4,14 @@ const scrigs = WebAssembly.instantiate(bytecode, {
     env: {
         print: function(x) {
             console.log(x);
-        }
+        },
+        game: Game,
     }
 }).then(result => {
-    var add = result.instance.exports.add;
-    add(33,5)
+    var loop = result.instance.exports.loop;
+    loop();
 });
 
-module.exports.loop = function() {
+// module.exports.loop = function() {
 
-}
+// }

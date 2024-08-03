@@ -1,8 +1,13 @@
-.PHONY: clean
+.PHONY: clean build test
 
-root.wasm:
+test:
+	zig build test
+
+build:
 	zig build
-	cp main.js zig-out/lib/
+	cp js/*.js zig-out/lib/
+	mkdir -p /host/Downloads/scrigs
+	cp zig-out/lib/* /host/Downloads/scrigs
 
 clean:
 	rm -rf zig-*/
